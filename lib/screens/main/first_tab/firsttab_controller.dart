@@ -1,42 +1,56 @@
-import 'package:food_app/models/category_model.dart';
-import 'package:food_app/models/category_spend_model.dart';
-import 'package:food_app/models/enums.dart';
+import 'package:flutter/material.dart';
+import 'package:food_app/models/item_model.dart';
+import 'package:food_app/screens/main/dashboard/dashboard_controller.dart';
 import 'package:get/get.dart';
 
 class FirstTabController extends GetxController {
-  List<CategorySpendModel> transactionList = [];
-  List<CategoryModel> categories = [];
-  int totalFood = 0;
-  int totalShopping = 0;
-  int totalEntertainment = 0;
+  RxList<ItemModel> items = List<ItemModel>.from([]).obs;
 
   init() {
+    items.clear();
     // final data = Get.find<AppData>();
+    items.add(ItemModel('1', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('2', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('3', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('3', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('4', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('5', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('6', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('101', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('102', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('103', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('104', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('105', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('106', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('107', 'name', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('108', 'name', Colors.red, '', 10, 'description'));
+    refresh();
   }
 
-  String getTitle(CategoryType type) {
-    switch (type) {
-      case CategoryType.Food:
-        return "Food";
-      case CategoryType.Shopping:
-        return "Shopping";
-      case CategoryType.Entertainment:
-        return "Entertainment";
-      default:
-        return "";
-    }
+  onIncrement(ItemModel item) {
+    final dashboardController = Get.find<DashboardController>();
+    dashboardController.addItem(item);
+    // item
+
+    item.count++;
+    // for (CartItemModel e in selectedItems) {
+    //   if (e.itemId == item.id) {
+    //     e.count++;
+    //     return;
+    //   }
+    // }
+    // CartItemModel newItem =
+    //     CartItemModel(count: 1, itemId: item.id, item: item);
+    // selectedItems.add(newItem);
+    refresh();
   }
 
-  int getSpend(CategoryType type) {
-    switch (type) {
-      case CategoryType.Food:
-        return totalFood;
-      case CategoryType.Shopping:
-        return totalShopping;
-      case CategoryType.Entertainment:
-        return totalEntertainment;
-      default:
-        return 0;
-    }
+  onDecrement(ItemModel item) {
+    final dashboardController = Get.find<DashboardController>();
+    if (item.count <= 0) return;
+    dashboardController.removeItem(item);
+
+    item.count--;
+    refresh();
   }
 }

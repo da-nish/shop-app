@@ -1,42 +1,36 @@
-import 'package:food_app/models/category_model.dart';
-import 'package:food_app/models/category_spend_model.dart';
-import 'package:food_app/models/enums.dart';
+import 'package:flutter/material.dart';
+import 'package:food_app/models/item_model.dart';
+import 'package:food_app/screens/main/dashboard/dashboard_controller.dart';
 import 'package:get/get.dart';
 
 class SecondTabController extends GetxController {
-  List<CategorySpendModel> transactionList = [];
-  List<CategoryModel> categories = [];
-  int totalFood = 0;
-  int totalShopping = 0;
-  int totalEntertainment = 0;
+  RxList<ItemModel> items = List<ItemModel>.from([]).obs;
 
   init() {
-    // final data = Get.find<AppData>();
+    items.clear();
+    items.add(ItemModel('8', 'Apple', Colors.red, '', 20, 'description'));
+    items.add(ItemModel('9', 'Mango', Colors.red, '', 20, 'description'));
+    items.add(ItemModel('10', 'Orange', Colors.red, '', 20, 'description'));
+    items.add(ItemModel('11', 'Banana', Colors.red, '', 20, 'description'));
+    items.add(ItemModel('12', 'Strawbarry', Colors.red, '', 20, 'description'));
+    items
+        .add(ItemModel('13', 'Blueberries', Colors.red, '', 20, 'description'));
+    items.add(ItemModel('14', 'Grapes', Colors.red, '', 20, 'description'));
+    refresh();
   }
 
-  String getTitle(CategoryType type) {
-    switch (type) {
-      case CategoryType.Food:
-        return "Food";
-      case CategoryType.Shopping:
-        return "Shopping";
-      case CategoryType.Entertainment:
-        return "Entertainment";
-      default:
-        return "";
-    }
+  onIncrement(ItemModel item) {
+    final dashboardController = Get.find<DashboardController>();
+    dashboardController.addItem(item);
+    item.count++;
+    refresh();
   }
 
-  int getSpend(CategoryType type) {
-    switch (type) {
-      case CategoryType.Food:
-        return totalFood;
-      case CategoryType.Shopping:
-        return totalShopping;
-      case CategoryType.Entertainment:
-        return totalEntertainment;
-      default:
-        return 0;
-    }
+  onDecrement(ItemModel item) {
+    final dashboardController = Get.find<DashboardController>();
+    if (item.count <= 0) return;
+    dashboardController.removeItem(item);
+    item.count--;
+    refresh();
   }
 }
