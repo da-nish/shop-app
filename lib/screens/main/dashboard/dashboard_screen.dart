@@ -74,7 +74,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         () => controller.hasItem()
             ? Container(
                 // color: Color.fromARGB(114, 255, 193, 7),
-                margin: EdgeInsets.only(bottom: 30, right: 18, left: 18),
+                margin: EdgeInsets.only(bottom: 40, right: 18, left: 18),
                 height: 60,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 decoration: BoxDecoration(
