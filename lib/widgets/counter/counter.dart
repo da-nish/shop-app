@@ -31,15 +31,7 @@ class _CounterState extends State<Counter> {
                   ? AppColors.textSecondary
                   : AppColors.grey,
               width: 2)),
-      child:
-          // cartItem == null
-          //     ? Text(
-          //         "Add",
-          //         textAlign: TextAlign.center,
-          //         style: AppTextStyle.h5Regular(),
-          //       )
-          //     :
-          Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(

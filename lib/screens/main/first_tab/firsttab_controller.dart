@@ -9,39 +9,37 @@ class FirstTabController extends GetxController {
   init() {
     items.clear();
     // final data = Get.find<AppData>();
-    items.add(ItemModel('1', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('2', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('3', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('3', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('4', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('5', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('6', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('101', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('102', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('103', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('104', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('105', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('106', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('107', 'name', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('108', 'name', Colors.red, '', 10, 'description'));
+    items.add(
+        ItemModel('1', 'Chicken pot pie', Colors.red, '', 10, 'description'));
+    items.add(
+        ItemModel('2', 'Mashed potatoes', Colors.red, '', 10, 'description'));
+    items.add(
+        ItemModel('3', 'Fried chicken', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('3', 'Burgers', Colors.red, '', 10, 'description'));
+    items
+        .add(ItemModel('4', 'Chicken soup', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('5', 'Meatloaf', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('6', 'Lasagna', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('101', 'meatballs', Colors.red, '', 10, 'description'));
+    items.add(
+        ItemModel('102', 'Chicken burger', Colors.red, '', 10, 'description'));
+    items.add(ItemModel(
+        '103', 'Chicken parmesan', Colors.red, '', 10, 'description'));
+    items.add(
+        ItemModel('104', 'Chicken Pesto', Colors.red, '', 10, 'description'));
+    items.add(
+        ItemModel('105', 'Burger Sliders', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('106', 'Biryani', Colors.red, '', 10, 'description'));
+    items.add(
+        ItemModel('107', 'Breadsticks', Colors.red, '', 10, 'description'));
+    items.add(ItemModel('108', 'Salad', Colors.red, '', 10, 'description'));
     refresh();
   }
 
   onIncrement(ItemModel item) {
     final dashboardController = Get.find<DashboardController>();
     dashboardController.addItem(item);
-    // item
-
     item.count++;
-    // for (CartItemModel e in selectedItems) {
-    //   if (e.itemId == item.id) {
-    //     e.count++;
-    //     return;
-    //   }
-    // }
-    // CartItemModel newItem =
-    //     CartItemModel(count: 1, itemId: item.id, item: item);
-    // selectedItems.add(newItem);
     refresh();
   }
 
@@ -49,7 +47,6 @@ class FirstTabController extends GetxController {
     final dashboardController = Get.find<DashboardController>();
     if (item.count <= 0) return;
     dashboardController.removeItem(item);
-
     item.count--;
     refresh();
   }

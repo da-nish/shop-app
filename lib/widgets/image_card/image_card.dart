@@ -1,28 +1,26 @@
+import 'package:food_app/theme/app_assets.dart';
 import 'package:food_app/theme/app_colors.dart';
 import 'package:food_app/theme/app_decoration.dart';
 import 'package:food_app/theme/app_dimens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class MerchantCard extends StatelessWidget {
+class ImageCard extends StatelessWidget {
   final String image;
-  final bool colorCard;
-  const MerchantCard(this.image, {this.colorCard = false, Key? key})
+  final Color background;
+  const ImageCard(this.image, {this.background = AppColors.grey, Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Color color = colorCard ? AppColors.blue : AppColors.white;
     return Container(
       width: Dimens.grid40,
-      height: Dimens.grid40,
+      // height: Dimens.grid40,
+      height: double.infinity,
       padding: const EdgeInsets.all(Dimens.grid10),
-      decoration: colorCard
-          ? AppBoxDecoration.coloredImageCard()
-          : AppBoxDecoration.imageCard(),
+      decoration: AppBoxDecoration.coloredImageCard(backgound: background),
       child: SvgPicture.asset(
-        image,
-        color: color,
+        image.isEmpty ? AppAssets.shop : image,
       ),
     );
   }

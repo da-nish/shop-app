@@ -79,7 +79,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(Dimens.grid8)),
-                  color: AppColors.selectedButton,
+                  color: Color.fromARGB(255, 61, 142, 197),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
