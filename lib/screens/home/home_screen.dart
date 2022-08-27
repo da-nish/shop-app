@@ -1,3 +1,4 @@
+import 'package:food_app/routes/get_pages.dart';
 import 'package:food_app/screens/home/home_controller.dart';
 import 'package:food_app/screens/home/widget/product_Item.dart';
 import 'package:food_app/theme/app_colors.dart';
@@ -12,7 +13,37 @@ class HomeScreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HomeAppBar("Home"),
+      appBar: HomeAppBar("Home", actions: [
+        GestureDetector(
+          onTap: () {
+            Get.toNamed<dynamic>(GetPages.cartScreen);
+          },
+          child: Stack(alignment: Alignment.bottomRight, children: [
+            Icon(
+              Icons.shopping_cart,
+              size: 34,
+            ),
+            Obx(
+              () => controller.cartSize <= 0
+                  ? Container()
+                  : Container(
+                      height: 20,
+                      width: 20,
+                      decoration: BoxDecoration(
+                        color: AppColors.containerColorWhite,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Center(
+                        child: Text(
+                          controller.cartSize.toString(),
+                          style: AppTextStyle.h6Regular(color: AppColors.black),
+                        ),
+                      ),
+                    ),
+            )
+          ]),
+        )
+      ]),
       body: Container(
         padding: const EdgeInsets.symmetric(
             horizontal: Dimens.grid16, vertical: Dimens.grid8),

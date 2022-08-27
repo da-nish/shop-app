@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   RxList<ItemModel> items = List<ItemModel>.from([]).obs;
-  RxList<CartItemModel> _selectedItems = List<CartItemModel>.from([]).obs;
+  RxList<CartItemModel> selectedItems = List<CartItemModel>.from([]).obs;
 
   @override
   onInit() {
@@ -42,17 +42,17 @@ class HomeController extends GetxController {
   // }
 
   void remove(ItemModel item) {
-    _selectedItems.removeWhere((element) => element.itemId == item.id);
-    print("length: ${_selectedItems.length}");
-    _cartSize.value = _selectedItems.length;
+    selectedItems.removeWhere((element) => element.itemId == item.id);
+    print("length: ${selectedItems.length}");
+    _cartSize.value = selectedItems.length;
     refresh();
   }
 
   void add(ItemModel item) {
     CartItemModel newItem =
         CartItemModel(count: 1, itemId: item.id, item: item);
-    _selectedItems.add(newItem);
-    _cartSize.value = _selectedItems.length;
+    selectedItems.add(newItem);
+    _cartSize.value = selectedItems.length;
 
     // price();
   }

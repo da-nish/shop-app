@@ -8,15 +8,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 class ImageCard extends StatelessWidget {
   final String image;
   final Color background;
-  const ImageCard(this.image, {this.background = AppColors.grey, Key? key})
+  final double? height;
+  const ImageCard(this.image,
+      {this.background = AppColors.grey, this.height, Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: Dimens.grid40,
-      // height: Dimens.grid40,
-      height: double.infinity,
+      height: height ?? double.infinity,
       padding: const EdgeInsets.all(Dimens.grid10),
       decoration: AppBoxDecoration.coloredImageCard(backgound: background),
       child: SvgPicture.asset(

@@ -7,11 +7,13 @@ import 'package:food_app/widgets/appbar/secondry_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PlaceOrderScreen extends GetView<PlaceOrderController> {
+class PlaceOrderScreen extends StatelessWidget {
   PlaceOrderScreen();
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<PlaceOrderController>();
+
     return Scaffold(
         appBar: CustomAppBar("Cart Items", showBackButton: true),
         body: Container(

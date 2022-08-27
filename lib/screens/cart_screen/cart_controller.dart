@@ -1,36 +1,37 @@
-import 'package:flutter/material.dart';
+import 'package:food_app/models/cart_item_model.dart';
 import 'package:food_app/models/item_model.dart';
+import 'package:food_app/screens/home/home_controller.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {
-  RxList<ItemModel> items = List<ItemModel>.from([]).obs;
+  RxList<CartItemModel> items = List<CartItemModel>.from([]).obs;
+  @override
+  onInit() {
+    super.onInit();
+    items.value = [...Get.find<HomeController>().selectedItems];
+    refresh();
+  }
 
-  init() {
-    items.clear();
-    // final data = Get.find<AppData>();
-    items.add(
-        ItemModel('1', 'Chicken pot pie', Colors.red, '', 10, 'description'));
-    items.add(
-        ItemModel('2', 'Mashed potatoes', Colors.red, '', 10, 'description'));
-    items.add(
-        ItemModel('3', 'Fried chicken', Colors.red, '', 10, 'description'));
-    items.add(ItemModel('3', 'Burgers', Colors.red, '', 10, 'description'));
+  void onIncrement(ItemModel item) {
+    updateItem(item, item.count + 1);
 
     refresh();
   }
 
-  onIncrement(ItemModel item) {
-    // final dashboardController = Get.find<DashboardController>();
-    // dashboardController.addItem(item);
-    // item.count++;
-    // refresh();
+  void updateItem(ItemModel item, int count) {
+    for (CartItemModel e in items) {
+      if (e.itemId == item.id) {
+        e.item.count = count;
+        break;
+      }
+    }
+    // price();
   }
 
-  onDecrement(ItemModel item) {
-    // final dashboardController = Get.find<DashboardController>();
-    // if (item.count <= 0) return;
-    // dashboardController.removeItem(item);
-    // item.count--;
-    // refresh();
+  void onDecrement(ItemModel item) {
+    if (item.count >= 1) {
+      updateItem(item, item.count - 1);
+    }
+    refresh();
   }
 }

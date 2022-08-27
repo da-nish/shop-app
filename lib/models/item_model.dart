@@ -11,5 +11,5 @@ class ItemModel {
 
   ItemModel(
       this.id, this.name, this.color, this.image, this.price, this.description,
-      {this.count = 0});
+      {this.count = 1});
 }

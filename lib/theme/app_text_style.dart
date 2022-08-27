@@ -247,7 +247,7 @@ class AppTextStyle {
       TextStyle(
           fontFamily: fontFamily,
           fontSize: Dimens.h6,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w500,
           color: color,
           fontStyle: fontStyle);
 

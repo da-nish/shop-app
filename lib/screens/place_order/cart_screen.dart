@@ -9,13 +9,14 @@ import 'package:food_app/widgets/appbar/secondry_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CartScreen extends GetView<CartController> {
+class CartScreen extends StatelessWidget {
   CartScreen();
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<CartController>();
     return Scaffold(
-      appBar: CustomAppBar("Cart Items", showBackButton: true),
+      appBar: CustomAppBar("Cart Items"),
       body: Container(
         padding: const EdgeInsets.symmetric(
             horizontal: Dimens.grid16, vertical: Dimens.grid8),
@@ -29,20 +30,13 @@ class CartScreen extends GetView<CartController> {
               style: AppTextStyle.h4Regular(color: AppColors.white),
             ),
             SizedBox(height: Dimens.grid20),
-            Obx(() => Container(
-                  decoration: AppBoxDecoration.container(),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: controller.items.length,
-                    itemBuilder: (context, index) {
-                      return CartItem(controller.items[index], controller);
-                    },
-                    // children: controller.items
-                    //     .map((e) => CartItem(e, controller))
-                    //     .toList()),
-                  ),
-                )),
+            Container(
+              decoration: AppBoxDecoration.container(),
+              child: Column(
+                  children: controller.items
+                      .map((e) => CartItem(e, controller))
+                      .toList()),
+            ),
             SizedBox(height: Dimens.grid20),
             Text(
               "Order details",

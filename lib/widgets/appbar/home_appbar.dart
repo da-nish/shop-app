@@ -7,49 +7,28 @@ import 'package:get/get.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final List<Widget> actions;
 
-  HomeAppBar(this.title);
+  HomeAppBar(this.title, {this.actions = const []});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-            horizontal: Dimens.grid20, vertical: Dimens.grid12),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(
-                child: Text(
-              title,
-              style: AppTextStyle.h2Bold(),
-            )),
-            GestureDetector(
-              onTap: () {
-                Get.toNamed<dynamic>(GetPages.cartScreen);
-              },
-              child: Stack(alignment: Alignment.bottomRight, children: [
-                Icon(
-                  Icons.shopping_cart,
-                  size: 34,
-                ),
-                Container(
-                  height: 20,
-                  width: 20,
-                  decoration: BoxDecoration(
-                    color: AppColors.containerColorWhite,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "2",
-                      style: AppTextStyle.h6Regular(color: AppColors.black),
-                    ),
-                  ),
-                )
-              ]),
-            )
-          ],
+      child: Scaffold(
+        body: Container(
+          padding: const EdgeInsets.symmetric(
+              horizontal: Dimens.grid20, vertical: Dimens.grid12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+                  child: Text(
+                title,
+                style: AppTextStyle.h2Bold(),
+              )),
+              ...actions,
+            ],
+          ),
         ),
       ),
     );
