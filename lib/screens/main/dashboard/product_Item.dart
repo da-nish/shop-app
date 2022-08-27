@@ -1,5 +1,5 @@
 // import 'package:food_app/models/item_model.dart';
-// import 'package:food_app/screens/main/first_tab/firsttab_controller.dart';
+// import 'package:food_app/screens/home/home_controller.dart';
 // import 'package:food_app/theme/app_decoration.dart';
 // import 'package:food_app/theme/app_text_style.dart';
 // import 'package:food_app/utils/string_extension.dart';
@@ -7,16 +7,16 @@
 // import 'package:food_app/widgets/counter/counter.dart';
 // import 'package:food_app/widgets/image_card/image_card.dart';
 
-// class FirstTabItem extends StatefulWidget {
+// class HomeProductItem extends StatefulWidget {
 //   final ItemModel item;
-//   final FirstTabController controller;
-//   FirstTabItem(this.item, this.controller);
+//   final HomeController controller;
+//   HomeProductItem(this.item, this.controller);
 
 //   @override
-//   State<FirstTabItem> createState() => _FirstTabItemState();
+//   State<HomeProductItem> createState() => _HomeProductItemState();
 // }
 
-// class _FirstTabItemState extends State<FirstTabItem> {
+// class _HomeProductItemState extends State<HomeProductItem> {
 //   @override
 //   Widget build(BuildContext context) {
 //     return Container(

@@ -31,6 +31,26 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               title,
               style: AppTextStyle.h2Bold(),
             )),
+            Stack(alignment: Alignment.bottomRight, children: [
+              Icon(
+                Icons.shopping_cart,
+                size: 34,
+              ),
+              Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                  color: AppColors.containerColorWhite,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Center(
+                  child: Text(
+                    "2",
+                    style: AppTextStyle.h6Regular(color: AppColors.black),
+                  ),
+                ),
+              )
+            ])
           ],
         ),
       ),

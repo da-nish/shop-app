@@ -1,22 +1,23 @@
 import 'package:food_app/models/item_model.dart';
-import 'package:food_app/screens/main/second_tab/secondtab_controller.dart';
+import 'package:food_app/screens/home/home_controller.dart';
 import 'package:food_app/theme/app_decoration.dart';
 import 'package:food_app/theme/app_text_style.dart';
 import 'package:food_app/utils/string_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app/widgets/add_to_cart/add_to_cart.dart';
 import 'package:food_app/widgets/counter/counter.dart';
 import 'package:food_app/widgets/image_card/image_card.dart';
 
-class SecondTabItem extends StatefulWidget {
+class HomeProductItem extends StatefulWidget {
   final ItemModel item;
-  final SecondTabController controller;
-  SecondTabItem(this.item, this.controller);
+  final HomeController controller;
+  HomeProductItem(this.item, this.controller);
 
   @override
-  State<SecondTabItem> createState() => _SecondTabItemState();
+  State<HomeProductItem> createState() => _HomeProductItemState();
 }
 
-class _SecondTabItemState extends State<SecondTabItem> {
+class _HomeProductItemState extends State<HomeProductItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,14 +48,14 @@ class _SecondTabItemState extends State<SecondTabItem> {
           Expanded(child: Container()),
           SizedBox(width: 10),
           Container(
-            width: 100,
-            child: Counter(
+            // width: 100,
+            child: AddToCart(
                 item: widget.item,
-                onDecrement: () => () {
+                onRemove: () => () {
                       widget.controller.onDecrement(widget.item);
                       setState(() {});
                     },
-                onIncrement: () => () {
+                onAdd: () => () {
                       widget.controller.onIncrement(widget.item);
                       setState(() {});
                     }),

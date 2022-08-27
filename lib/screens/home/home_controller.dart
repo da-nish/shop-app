@@ -3,7 +3,7 @@ import 'package:food_app/models/item_model.dart';
 import 'package:food_app/screens/main/dashboard/dashboard_controller.dart';
 import 'package:get/get.dart';
 
-class SecondTabController extends GetxController {
+class HomeController extends GetxController {
   RxList<ItemModel> items = List<ItemModel>.from([]).obs;
 
   init() {
@@ -16,21 +16,27 @@ class SecondTabController extends GetxController {
     items
         .add(ItemModel('13', 'Blueberries', Colors.red, '', 20, 'description'));
     items.add(ItemModel('14', 'Grapes', Colors.red, '', 20, 'description'));
+
+    items.add(ItemModel('15', 'Apple', Colors.red, '', 20, 'description'));
+    items.add(ItemModel('16', 'Mango', Colors.red, '', 20, 'description'));
+    items.add(ItemModel('17', 'Orange', Colors.red, '', 20, 'description'));
+    items.add(ItemModel('18', 'Banana', Colors.red, '', 20, 'description'));
+    items.add(ItemModel('19', 'Strawbarry', Colors.red, '', 20, 'description'));
     refresh();
   }
 
   onIncrement(ItemModel item) {
-    final dashboardController = Get.find<DashboardController>();
-    dashboardController.addItem(item);
-    item.count++;
-    refresh();
+    // final dashboardController = Get.find<DashboardController>();
+    // dashboardController.addItem(item);
+    // item.count++;
+    // refresh();
   }
 
   onDecrement(ItemModel item) {
-    final dashboardController = Get.find<DashboardController>();
-    if (item.count <= 0) return;
-    dashboardController.removeItem(item);
-    item.count--;
-    refresh();
+    // final dashboardController = Get.find<DashboardController>();
+    // if (item.count <= 0) return;
+    // dashboardController.removeItem(item);
+    // item.count--;
+    // refresh();
   }
 }

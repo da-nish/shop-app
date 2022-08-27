@@ -1,8 +1,8 @@
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
-class FirstTabBinding extends Bindings {
-  @override
-  void dependencies() {
-    // Get.put(FirstTabController());
-  }
-}
+// class FirstTabBinding extends Bindings {
+//   @override
+//   void dependencies() {
+//     // Get.put(FirstTabController());
+//   }
+// }
