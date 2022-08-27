@@ -19,76 +19,71 @@ class CartScreen extends GetView<CartController> {
       body: Container(
         padding: const EdgeInsets.symmetric(
             horizontal: Dimens.grid16, vertical: Dimens.grid8),
-        child: ListView(
-          children: [
-            SizedBox(height: Dimens.grid10),
-            // MerchantCard("", colorCard: true),
-            SizedBox(height: Dimens.grid20),
-            Text(
-              "Items",
-              style: AppTextStyle.h4Regular(color: AppColors.white),
-            ),
-            SizedBox(height: Dimens.grid20),
-            Obx(() => Container(
-                  decoration: AppBoxDecoration.container(),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: controller.items.length,
-                    itemBuilder: (context, index) {
-                      return CartItem(controller.items[index], controller);
-                    },
-                    // children: controller.items
-                    //     .map((e) => CartItem(e, controller))
-                    //     .toList()),
+        child: controller.items.length <= 0
+            ? Text("Please add item in the cart")
+            : ListView(
+                children: [
+                  SizedBox(height: Dimens.grid10),
+                  // MerchantCard("", colorCard: true),
+                  SizedBox(height: Dimens.grid20),
+                  Text(
+                    "Items",
+                    style: AppTextStyle.h4Regular(color: AppColors.white),
                   ),
-                )),
-            SizedBox(height: Dimens.grid20),
-            Text(
-              "Order details",
-              style: AppTextStyle.h4Regular(color: AppColors.white),
-            ),
-            SizedBox(height: Dimens.grid20),
+                  SizedBox(height: Dimens.grid20),
+                  Obx(() => Container(
+                        decoration: AppBoxDecoration.container(),
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: controller.items.length,
 
-            PlaceOrderCard(),
-            SizedBox(height: Dimens.grid20),
-          ],
-        ),
+                          itemBuilder: (context, index) {
+                            return CartItem(
+                                controller.items[index], controller);
+                          },
+                          // children: controller.items
+                          //     .map((e) => CartItem(e, controller))
+                          //     .toList()),
+                        ),
+                      )),
+                  SizedBox(height: Dimens.grid20),
+                  Text(
+                    "Order details",
+                    style: AppTextStyle.h4Regular(color: AppColors.white),
+                  ),
+                  SizedBox(height: Dimens.grid20),
+
+                  PlaceOrderCard(controller),
+                  SizedBox(height: Dimens.grid20),
+                  // SizedBox(
+                  //     height: 200,
+                  //     child: AnimatedSwitcher(
+                  //       transitionBuilder:
+                  //           (Widget child, Animation<double> animation) {
+                  //         return ScaleTransition(
+                  //             scale: animation, child: child);
+                  //       },
+                  //       duration: const Duration(milliseconds: 1500),
+                  //       child: controller.loading.value
+                  //           ? TextButton(
+                  //               onPressed: () {
+                  //                 controller.loading.value =
+                  //                     !controller.loading.value;
+                  //               },
+                  //               child: Text("dflasdkf"),
+                  //             )
+                  //           : TextButton(
+                  //               onPressed: () {
+                  //                 controller.loading.value =
+                  //                     !controller.loading.value;
+                  //               },
+                  //               child: Text("1111111111"),
+                  //             ),
+                  //     )),
+                ],
+              ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      // floatingActionButton: Obx(
-      //   () => controller.hasItem()
-      //       ? Container(
-      //           // color: Color.fromARGB(114, 255, 193, 7),
-      //           margin: EdgeInsets.only(bottom: 40, right: 18, left: 18),
-      //           height: 60,
-      //           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      //           decoration: BoxDecoration(
-      //             borderRadius: BorderRadius.all(Radius.circular(Dimens.grid8)),
-      //             color: Color.fromARGB(255, 61, 142, 197),
-      //           ),
-      //           child: Row(
-      //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //             crossAxisAlignment: CrossAxisAlignment.center,
-      //             children: [
-      //               Column(
-      //                 crossAxisAlignment: CrossAxisAlignment.start,
-      //                 mainAxisAlignment: MainAxisAlignment.center,
-      //                 children: [
-      //                   Text("Items: " + controller.totalItems.toString()),
-      //                   Text(
-      //                       "Quantity: " + controller.totalQuantity.toString()),
-      //                 ],
-      //               ),
-      //               Text(
-      //                 controller.totalPrice.withDigits(2).rupee(),
-      //                 style: AppTextStyle.h3Bold(),
-      //               )
-      //             ],
-      //           ),
-      //         )
-      //       : Container(),
-      // ),
     );
   }
 }

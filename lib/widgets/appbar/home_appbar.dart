@@ -1,9 +1,6 @@
-import 'package:food_app/routes/get_pages.dart';
-import 'package:food_app/theme/app_colors.dart';
 import 'package:food_app/theme/app_dimens.dart';
 import 'package:food_app/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;

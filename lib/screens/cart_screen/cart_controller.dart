@@ -5,23 +5,51 @@ import 'package:get/get.dart';
 
 class CartController extends GetxController {
   RxList<CartItemModel> items = List<CartItemModel>.from([]).obs;
+  RxDouble _totalPrice = 0.0.obs;
+  RxInt _totalQuantity = 0.obs;
+
+  int get totalQuantity => _totalQuantity.value;
+  double get totalPrice => _totalPrice.value;
   @override
   onInit() {
     super.onInit();
     items.value = [...Get.find<HomeController>().selectedItems];
+
+    _totalPrice.value = 0.0;
+    _totalQuantity.value = 0;
+    for (CartItemModel e in items) {
+      if (e.item.count > 0) {
+        _totalPrice.value += e.item.price * e.item.count;
+        _totalQuantity.value += e.item.count;
+      }
+    }
+    calculatePrice();
     refresh();
+  }
+
+  void calculatePrice() {
+    _totalPrice.value = 0.0;
+    _totalQuantity.value = 0;
+    for (CartItemModel e in items) {
+      if (e.item.count > 0) {
+        _totalPrice.value += e.item.price * e.item.count;
+        _totalQuantity.value += 1;
+      }
+    }
   }
 
   void onIncrement(ItemModel item) {
     updateItem(item, item.count + 1);
-
     refresh();
   }
 
+  RxBool loading = true.obs;
   void updateItem(ItemModel item, int count) {
     for (CartItemModel e in items) {
       if (e.itemId == item.id) {
         e.item.count = count;
+        calculatePrice();
+
         break;
       }
     }

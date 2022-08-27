@@ -91,7 +91,9 @@ class HomeScreen extends GetView<HomeController> {
                       ],
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed<dynamic>(GetPages.cartScreen);
+                      },
                       child: Text(
                         "Goto Cart",
                         // controller.totalPrice.withDigits(2).rupee(),
