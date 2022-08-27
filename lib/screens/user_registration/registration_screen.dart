@@ -1,0 +1,153 @@
+import 'package:food_app/routes/get_pages.dart';
+import 'package:food_app/screens/user_registration/registration_controller.dart';
+import 'package:food_app/theme/app_dimens.dart';
+import 'package:food_app/widgets/appbar/secondry_appbar.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
+
+class RegistrationScreen extends GetView<RegistrationController> {
+  RegistrationScreen();
+
+//custom method
+  final _form = GlobalKey<FormState>();
+  final focusEmail = FocusNode();
+  final focusPhone = FocusNode();
+
+  void saveForm(BuildContext context) {
+    print(controller.userInfo.toString());
+    // final isvalid = _form.currentState!.validate();
+    // if (isvalid == false) {
+    //   return;
+    // }
+    _openCustomDialog(context);
+    Future.delayed(
+        const Duration(milliseconds: 2400), () => Get.toNamed(GetPages.home));
+    _form.currentState?.save();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: CustomAppBar("Create User"),
+        body: Container(
+          padding: const EdgeInsets.symmetric(
+              horizontal: Dimens.grid16, vertical: Dimens.grid8),
+          child: ListView(
+            children: [
+              SizedBox(height: Dimens.grid10),
+              SizedBox(height: Dimens.grid20),
+              Form(
+                key: _form,
+                child: Column(children: <Widget>[
+                  TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Name',
+                      ),
+                      textInputAction:
+                          TextInputAction.next, //show next icon in keyboard
+                      onFieldSubmitted: (value) {
+                        FocusScope.of(context)
+                            .requestFocus(focusEmail); //define focusnumber
+                      },
+                      validator: (value) {
+                        if ((value ?? "").isEmpty) {
+                          return 'Please enter your name';
+                        } else if (!controller.validateName(value!)) {
+                          return 'invalid name';
+                        }
+                        return null; //means no error
+                      },
+                      onChanged: (value) {
+                        controller.userInfo.name = value;
+                      }),
+                  TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                      ),
+                      textInputAction:
+                          TextInputAction.next, //show next icon in keyboard
+                      keyboardType: TextInputType.emailAddress,
+                      focusNode: focusEmail,
+                      onFieldSubmitted: (value) {
+                        print(controller.validateEmail(value));
+                        FocusScope.of(context).requestFocus(focusPhone);
+                      },
+                      validator: (value) {
+                        if ((value ?? "").isEmpty) {
+                          return 'Please enter your email address';
+                        } else if (!controller.validateEmail(value!)) {
+                          return 'invalid email address';
+                        }
+
+                        return null; //means no error
+                      },
+                      onChanged: (value) {
+                        controller.userInfo.email = value;
+                      }),
+                  TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Phone No.',
+                      ),
+                      keyboardType: TextInputType.phone,
+                      inputFormatters: [],
+                      textInputAction:
+                          TextInputAction.done, //show next icon in keyboard
+                      focusNode: focusPhone,
+                      validator: (value) {
+                        if ((value ?? "").isEmpty) {
+                          return 'Please enter your phone no.';
+                        } else if (!controller.validatePhone(value!)) {
+                          return 'invalid phone no.';
+                        }
+                        // else if(controller.validateEmail(value))
+                        return null; //means no error
+                      },
+                      onChanged: (value) {
+                        controller.userInfo.phone = value;
+                      })
+                ]),
+              ),
+              SizedBox(height: Dimens.grid20),
+              Align(
+                  alignment: Alignment.centerRight,
+                  child: OutlinedButton(
+                      onPressed: () {
+                        saveForm(context);
+                      },
+                      child: Text("Sign Up")))
+            ],
+          ),
+        ));
+  }
+
+  void _openCustomDialog(context) {
+    showGeneralDialog(
+        barrierColor: Colors.black.withOpacity(0.5),
+        transitionBuilder: (context, a1, a2, widget) {
+          return Transform.scale(
+            scale: a1.value,
+            child: Opacity(
+              opacity: a1.value,
+              child: AlertDialog(
+                shape: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16.0)),
+                title: Text('Success !!'),
+                content: Lottie.asset('assets/lottie/completed.json',
+                    repeat: false,
+                    reverse: false,
+                    width: 140,
+                    height: 140,
+                    fit: BoxFit.contain,
+                    addRepaintBoundary: true),
+              ),
+            ),
+          );
+        },
+        transitionDuration: Duration(milliseconds: 200),
+        barrierDismissible: true,
+        barrierLabel: '',
+        context: context,
+        pageBuilder: (context, animation1, animation2) => Container());
+  }
+}

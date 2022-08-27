@@ -1,22 +1,22 @@
 import 'package:food_app/models/item_model.dart';
-import 'package:food_app/screens/home/home_controller.dart';
+import 'package:food_app/screens/cart_screen/cart_controller.dart';
 import 'package:food_app/theme/app_decoration.dart';
 import 'package:food_app/theme/app_text_style.dart';
 import 'package:food_app/utils/string_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:food_app/widgets/add_to_cart/add_to_cart.dart';
+import 'package:food_app/widgets/counter/counter.dart';
 import 'package:food_app/widgets/image_card/image_card.dart';
 
-class HomeProductItem extends StatefulWidget {
+class CartItem extends StatefulWidget {
   final ItemModel item;
-  final HomeController controller;
-  HomeProductItem(this.item, this.controller);
+  final CartController controller;
+  CartItem(this.item, this.controller);
 
   @override
-  State<HomeProductItem> createState() => _HomeProductItemState();
+  State<CartItem> createState() => _CartItemState();
 }
 
-class _HomeProductItemState extends State<HomeProductItem> {
+class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,17 +47,17 @@ class _HomeProductItemState extends State<HomeProductItem> {
           Expanded(child: Container()),
           SizedBox(width: 10),
           Container(
-            // width: 100,
-            child: AddToCart(
+            width: 100,
+            child: Counter(
                 item: widget.item,
-                onRemove: () {
-                  widget.controller.remove(widget.item);
-                  setState(() {});
-                },
-                onAdd: () {
-                  widget.controller.add(widget.item);
-                  setState(() {});
-                }),
+                onDecrement: () => () {
+                      widget.controller.onDecrement(widget.item);
+                      setState(() {});
+                    },
+                onIncrement: () => () {
+                      widget.controller.onIncrement(widget.item);
+                      setState(() {});
+                    }),
           )
         ],
       ),

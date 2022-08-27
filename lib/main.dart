@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.defaultTheme,
       debugShowCheckedModeBanner: false,
       getPages: GetPages.routes(),
-      initialRoute: GetPages.home,
+      initialRoute: GetPages.userRegistrationScreen,
     );
   }
 }

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/models/cart_item_model.dart';
 import 'package:food_app/models/item_model.dart';
-import 'package:food_app/screens/main/dashboard/dashboard_controller.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   RxList<ItemModel> items = List<ItemModel>.from([]).obs;
+  RxList<CartItemModel> _selectedItems = List<CartItemModel>.from([]).obs;
 
-  init() {
+  @override
+  onInit() {
+    super.onInit();
     items.clear();
     items.add(ItemModel('8', 'Apple', Colors.red, '', 20, 'description'));
     items.add(ItemModel('9', 'Mango', Colors.red, '', 20, 'description'));
@@ -22,21 +25,35 @@ class HomeController extends GetxController {
     items.add(ItemModel('17', 'Orange', Colors.red, '', 20, 'description'));
     items.add(ItemModel('18', 'Banana', Colors.red, '', 20, 'description'));
     items.add(ItemModel('19', 'Strawbarry', Colors.red, '', 20, 'description'));
+    // refresh();
+  }
+
+  RxInt _totalQuantity = 0.obs;
+  int get totalQuantity => _totalQuantity.value;
+  int get totalItems => _totalQuantity.value;
+
+  //   RxDouble _totalPrice = 0.0.obs;
+  // double get totalPrice => _totalPrice.value;
+
+  RxInt _cartSize = 0.obs;
+  int get cartSize => _cartSize.value;
+  // set cartSize(int value) {
+  //   _cartSize.value = value;
+  // }
+
+  void remove(ItemModel item) {
+    _selectedItems.removeWhere((element) => element.itemId == item.id);
+    print("length: ${_selectedItems.length}");
+    _cartSize.value = _selectedItems.length;
     refresh();
   }
 
-  onIncrement(ItemModel item) {
-    // final dashboardController = Get.find<DashboardController>();
-    // dashboardController.addItem(item);
-    // item.count++;
-    // refresh();
-  }
+  void add(ItemModel item) {
+    CartItemModel newItem =
+        CartItemModel(count: 1, itemId: item.id, item: item);
+    _selectedItems.add(newItem);
+    _cartSize.value = _selectedItems.length;
 
-  onDecrement(ItemModel item) {
-    // final dashboardController = Get.find<DashboardController>();
-    // if (item.count <= 0) return;
-    // dashboardController.removeItem(item);
-    // item.count--;
-    // refresh();
+    // price();
   }
 }
