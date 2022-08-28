@@ -29,12 +29,10 @@ class RegistrationScreen extends GetView<RegistrationController> {
     return Scaffold(
         appBar: CustomAppBar("Create User"),
         body: Container(
-          padding: const EdgeInsets.symmetric(
-              horizontal: Dimens.grid16, vertical: Dimens.grid8),
-          child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: Dimens.grid16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: Dimens.grid10),
-              SizedBox(height: Dimens.grid20),
               Form(
                 key: _form,
                 child: Column(children: <Widget>[
@@ -107,13 +105,17 @@ class RegistrationScreen extends GetView<RegistrationController> {
                 ]),
               ),
               SizedBox(height: Dimens.grid20),
+              SizedBox(height: Dimens.grid20),
               Align(
                   alignment: Alignment.centerRight,
                   child: OutlinedButton(
                       onPressed: () {
                         saveForm(context);
                       },
-                      child: Text("Sign Up")))
+                      child: Text("Sign Up"))),
+              SizedBox(height: Dimens.grid20),
+              SizedBox(height: Dimens.grid20),
+              Text("")
             ],
           ),
         ));

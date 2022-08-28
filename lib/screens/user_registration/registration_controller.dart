@@ -7,7 +7,8 @@ class RegistrationController extends GetxController {
   RxBool signupComplete = false.obs;
 
   bool validateName(String value) {
-    String pattern = r'[!@#<>?":_`~;[\]\\|=+)(*&^%\s-]';
+    String pattern = '^[a-zA-Z -]*\$';
+    // String pattern = r'[!@#<>?":_`~;[\]\\|=+)(*&^%\s-]';
     RegExp regex = RegExp(pattern);
     if (value.isEmpty) return false;
     return (!regex.hasMatch(value)) ? false : true;
