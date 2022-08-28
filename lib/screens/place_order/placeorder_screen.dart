@@ -32,15 +32,6 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen>
     if (amount!.isEmpty) Get.back();
   }
 
-  Future<void> countDown() async {
-    Future.delayed(const Duration(seconds: 1), () {
-      if (countdown >= 0)
-        setState(() {
-          countdown--;
-        });
-    });
-  }
-
   Future<void> redirect() async {
     await Future.delayed(const Duration(seconds: 5), () {
       Get.offAllNamed(GetPages.home);
@@ -51,7 +42,6 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen>
     setState(() {
       load = true;
     });
-
     Future.delayed(const Duration(seconds: 2), () {
       if (!paymentSuccess)
         setState(() {

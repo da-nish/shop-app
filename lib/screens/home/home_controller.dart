@@ -25,21 +25,14 @@ class HomeController extends GetxController {
     items.add(ItemModel('17', 'Orange', Colors.red, '', 20, 'description'));
     items.add(ItemModel('18', 'Banana', Colors.red, '', 20, 'description'));
     items.add(ItemModel('19', 'Strawbarry', Colors.red, '', 20, 'description'));
-    // refresh();
   }
 
   RxInt _totalQuantity = 0.obs;
   int get totalQuantity => _totalQuantity.value;
   int get totalItems => _totalQuantity.value;
 
-  //   RxDouble _totalPrice = 0.0.obs;
-  // double get totalPrice => _totalPrice.value;
-
   RxInt _cartSize = 0.obs;
   int get cartSize => _cartSize.value;
-  // set cartSize(int value) {
-  //   _cartSize.value = value;
-  // }
 
   void remove(ItemModel item) {
     selectedItems.removeWhere((element) => element.itemId == item.id);
@@ -49,11 +42,12 @@ class HomeController extends GetxController {
   }
 
   void add(ItemModel item) {
+    int index =
+        selectedItems.indexWhere((element) => element.item.id == item.id);
+    if (index != -1) return;
     CartItemModel newItem =
         CartItemModel(count: 1, itemId: item.id, item: item);
     selectedItems.add(newItem);
     _cartSize.value = selectedItems.length;
-
-    // price();
   }
 }

@@ -10,10 +10,12 @@ class CartController extends GetxController {
 
   int get totalQuantity => _totalQuantity.value;
   double get totalPrice => _totalPrice.value;
+  String s = "0";
   @override
   onInit() {
     super.onInit();
     items.value = [...Get.find<HomeController>().selectedItems];
+    s = "1";
 
     _totalPrice.value = 0.0;
     _totalQuantity.value = 0;
