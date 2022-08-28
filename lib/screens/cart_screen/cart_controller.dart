@@ -1,6 +1,8 @@
 import 'package:food_app/models/cart_item_model.dart';
 import 'package:food_app/models/item_model.dart';
+import 'package:food_app/routes/get_pages.dart';
 import 'package:food_app/screens/home/home_controller.dart';
+import 'package:food_app/utils/double_extension.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {
@@ -10,12 +12,10 @@ class CartController extends GetxController {
 
   int get totalQuantity => _totalQuantity.value;
   double get totalPrice => _totalPrice.value;
-  String s = "0";
   @override
   onInit() {
     super.onInit();
     items.value = [...Get.find<HomeController>().selectedItems];
-    s = "1";
 
     _totalPrice.value = 0.0;
     _totalQuantity.value = 0;
@@ -51,11 +51,9 @@ class CartController extends GetxController {
       if (e.itemId == item.id) {
         e.item.count = count;
         calculatePrice();
-
         break;
       }
     }
-    // price();
   }
 
   void onDecrement(ItemModel item) {
@@ -63,5 +61,10 @@ class CartController extends GetxController {
       updateItem(item, item.count - 1);
     }
     refresh();
+  }
+
+  void redirectToPayment() {
+    Get.toNamed<dynamic>(GetPages.placeOrderScreen,
+        arguments: {'totalAmount': totalPrice.withDigits(2).toString()});
   }
 }

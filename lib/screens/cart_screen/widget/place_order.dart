@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/routes/get_pages.dart';
 import 'package:food_app/screens/cart_screen/cart_controller.dart';
 import 'package:food_app/theme/app_decoration.dart';
 import 'package:food_app/utils/double_extension.dart';
+import 'package:food_app/utils/string_extension.dart';
 import 'package:get/get.dart';
 
 class PlaceOrderCard extends StatelessWidget {
@@ -30,7 +30,7 @@ class PlaceOrderCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Total price"),
-                  Text(controller.totalPrice.toString()),
+                  Text(controller.totalPrice.withDigits(2).rupee()),
                 ],
               ),
               const SizedBox(height: 16),
@@ -38,14 +38,7 @@ class PlaceOrderCard extends StatelessWidget {
                 Align(
                     alignment: Alignment.centerRight,
                     child: OutlinedButton(
-                        onPressed: () {
-                          Get.toNamed<dynamic>(GetPages.placeOrderScreen,
-                              arguments: {
-                                'totalAmount': controller.totalPrice
-                                    .withDigits(2)
-                                    .toString()
-                              });
-                        },
+                        onPressed: () => controller.redirectToPayment(),
                         child: Text("Place Order")))
             ],
           ),

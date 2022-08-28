@@ -1,4 +1,3 @@
-import 'package:food_app/routes/get_pages.dart';
 import 'package:food_app/screens/user_registration/registration_controller.dart';
 import 'package:food_app/theme/app_dimens.dart';
 import 'package:food_app/widgets/appbar/secondry_appbar.dart';
@@ -16,13 +15,12 @@ class RegistrationScreen extends GetView<RegistrationController> {
 
   void saveForm(BuildContext context) {
     print(controller.userInfo.toString());
-    // final isvalid = _form.currentState!.validate();
-    // if (isvalid == false) {
-    //   return;
-    // }
+    final isvalid = _form.currentState!.validate();
+    if (isvalid == false) {
+      return;
+    }
     _openCustomDialog(context);
-    Future.delayed(
-        const Duration(milliseconds: 2400), () => Get.toNamed(GetPages.home));
+    Future.delayed(Dimens.durationXXL, () => controller.redirectToHome());
     _form.currentState?.save();
   }
 
@@ -42,7 +40,7 @@ class RegistrationScreen extends GetView<RegistrationController> {
                 child: Column(children: <Widget>[
                   TextFormField(
                       decoration: InputDecoration(
-                        labelText: 'Name',
+                        labelText: 'Full name',
                       ),
                       textInputAction:
                           TextInputAction.next, //show next icon in keyboard
@@ -131,20 +129,20 @@ class RegistrationScreen extends GetView<RegistrationController> {
               opacity: a1.value,
               child: AlertDialog(
                 shape: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16.0)),
+                    borderRadius: BorderRadius.circular(Dimens.grid16)),
                 title: Text('Success !!'),
                 content: Lottie.asset('assets/lottie/completed.json',
                     repeat: false,
                     reverse: false,
-                    width: 140,
-                    height: 140,
+                    width: Dimens.grid140,
+                    height: Dimens.grid140,
                     fit: BoxFit.contain,
                     addRepaintBoundary: true),
               ),
             ),
           );
         },
-        transitionDuration: Duration(milliseconds: 200),
+        transitionDuration: Dimens.durationS,
         barrierDismissible: true,
         barrierLabel: '',
         context: context,

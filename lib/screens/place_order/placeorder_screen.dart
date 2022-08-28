@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:food_app/routes/get_pages.dart';
+import 'package:food_app/screens/place_order/widget/showup_widget.dart';
 import 'package:food_app/theme/app_colors.dart';
 import 'package:food_app/theme/app_dimens.dart';
 import 'package:food_app/theme/app_text_style.dart';
@@ -57,19 +58,11 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen>
   int _start = 5;
 
   void startTimer() {
-    const oneSec = const Duration(seconds: 1);
     _timer = new Timer.periodic(
-      oneSec,
+      const Duration(seconds: 1),
       (Timer timer) {
-        if (_start == 0) {
-          setState(() {
-            timer.cancel();
-          });
-        } else {
-          setState(() {
-            _start--;
-          });
-        }
+        _start == 0 ? timer.cancel() : _start--;
+        setState(() {});
       },
     );
   }
@@ -92,42 +85,49 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen>
                 Container(
                   child: Column(
                     children: [
-                      Text(
-                        "Order placed successfully !! ",
-                        style: AppTextStyle.h3Regular(),
+                      ShowUp(
+                        child: Text(
+                          "Order placed successfully !! ",
+                          style: AppTextStyle.h3Regular(),
+                        ),
+                        delay: 2,
                       ),
-                      Text(
-                        "Your order has been placed successfully",
-                        style: AppTextStyle.h5Regular(color: AppColors.grey),
+                      ShowUp(
+                        child: Text(
+                          "Your order has been placed successfully",
+                          style: AppTextStyle.h5Regular(color: AppColors.grey),
+                        ),
+                        delay: 2,
                       ),
                     ],
                   ),
                 ),
-              const SizedBox(height: 20),
+              const SizedBox(height: Dimens.grid20),
               Text(
                 amount!.rupee(),
                 style: AppTextStyle.h2Regular(),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: Dimens.grid20),
               if (paymentSuccess)
                 Lottie.asset('assets/lottie/done.json',
                     repeat: false,
                     reverse: false,
-                    width: 80,
+                    width: Dimens.grid80,
                     fit: BoxFit.contain,
                     addRepaintBoundary: true)
               else
                 AnimatedContainer(
                   curve: Curves.easeIn,
-                  margin: EdgeInsets.only(top: load || paymentSuccess ? 20 : 0),
-                  width: load ? 60 : 200,
+                  margin: EdgeInsets.only(
+                      top: load || paymentSuccess ? Dimens.grid20 : 0),
+                  width: load ? Dimens.grid60 : Dimens.grid200,
                   duration: const Duration(seconds: 1),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: Dimens.grid10, vertical: Dimens.grid10),
                   decoration: BoxDecoration(
                       color: AppColors.dark,
-                      borderRadius: BorderRadius.circular(50)),
-                  child: load || paymentSuccess
+                      borderRadius: BorderRadius.circular(Dimens.grid48)),
+                  child: load
                       ? Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
@@ -135,11 +135,10 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen>
                           ],
                         )
                       : GestureDetector(
-                          onTap: () {
-                            pay();
-                          },
+                          onTap: () => pay(),
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 24),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: Dimens.grid24),
                             child: Text(
                               "Pay Now",
                               textAlign: TextAlign.center,
@@ -149,11 +148,11 @@ class _PlaceOrderScreenState extends State<PlaceOrderScreen>
                         ),
                 ),
               SizedBox(height: Dimens.grid20),
-              if (paymentSuccess)
-                Text("Redirecting in " + _start.toString() + " seconds...",
-                    style: AppTextStyle.h5Regular(color: AppColors.textGrey))
-              else
-                SizedBox(height: 20)
+              Text(
+                  !paymentSuccess
+                      ? ""
+                      : ("Redirecting in " + _start.toString() + " seconds..."),
+                  style: AppTextStyle.h5Regular(color: AppColors.textGrey))
             ],
           ),
         ));

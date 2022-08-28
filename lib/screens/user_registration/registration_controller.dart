@@ -1,4 +1,5 @@
 import 'package:food_app/models/user_model.dart';
+import 'package:food_app/routes/get_pages.dart';
 import 'package:get/get.dart';
 
 class RegistrationController extends GetxController {
@@ -25,5 +26,9 @@ class RegistrationController extends GetxController {
     RegExp regex = RegExp(pattern);
     if (value.isEmpty) return false;
     return (!regex.hasMatch(value)) ? false : true;
+  }
+
+  void redirectToHome() {
+    Get.offAllNamed(GetPages.home);
   }
 }

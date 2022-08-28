@@ -24,7 +24,6 @@ class CartScreen extends GetView<CartController> {
             : ListView(
                 children: [
                   SizedBox(height: Dimens.grid10),
-                  // MerchantCard("", colorCard: true),
                   SizedBox(height: Dimens.grid20),
                   Text(
                     "Items",
@@ -37,14 +36,10 @@ class CartScreen extends GetView<CartController> {
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: controller.items.length,
-
                           itemBuilder: (context, index) {
                             return CartItem(
                                 controller.items[index], controller);
                           },
-                          // children: controller.items
-                          //     .map((e) => CartItem(e, controller))
-                          //     .toList()),
                         ),
                       )),
                   SizedBox(height: Dimens.grid20),
@@ -53,34 +48,8 @@ class CartScreen extends GetView<CartController> {
                     style: AppTextStyle.h4Regular(color: AppColors.white),
                   ),
                   SizedBox(height: Dimens.grid20),
-
                   PlaceOrderCard(controller),
                   SizedBox(height: Dimens.grid20),
-                  // SizedBox(
-                  //     height: 200,
-                  //     child: AnimatedSwitcher(
-                  //       transitionBuilder:
-                  //           (Widget child, Animation<double> animation) {
-                  //         return ScaleTransition(
-                  //             scale: animation, child: child);
-                  //       },
-                  //       duration: const Duration(milliseconds: 1500),
-                  //       child: controller.loading.value
-                  //           ? TextButton(
-                  //               onPressed: () {
-                  //                 controller.loading.value =
-                  //                     !controller.loading.value;
-                  //               },
-                  //               child: Text("dflasdkf"),
-                  //             )
-                  //           : TextButton(
-                  //               onPressed: () {
-                  //                 controller.loading.value =
-                  //                     !controller.loading.value;
-                  //               },
-                  //               child: Text("1111111111"),
-                  //             ),
-                  //     )),
                 ],
               ),
       ),

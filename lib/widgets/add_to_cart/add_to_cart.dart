@@ -44,7 +44,7 @@ class _AddToCartState extends State<AddToCart> {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: Duration(seconds: 1),
+      duration: Dimens.durationL,
       padding: const EdgeInsets.all(Dimens.grid8),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Dimens.grid20),

@@ -1,40 +1,4 @@
-import 'dart:ui';
-
 class Dimens {
-  static const double graphBarsSpacing = 8;
-  static const double graphBarWidth = 10;
-  static const double graphBarScaleHeight = 200;
-  static const double separatorWeight = 1;
-  static const double switchHeight = 32;
-  static const double switchTrackHeight = 28;
-  static const double switchWidth = 52;
-  static const double spreadDiameter = 52;
-  static const double intervalSelectorBorderWidth = 2;
-  static const double avatarSize = 46;
-  static const double textContainerRadius = 2;
-  static const double raisedButtonHeight = 44;
-  static const double raisedButtonHeightSubHeading = 60;
-  static const double textFieldHeight = 32;
-  static const double textFieldActionImageSize = 22;
-  static const double miniButtonHeight = 26;
-  static const double miniButtonWidth = 100;
-  static const double buttonCornerRadius = 5;
-  static const double bottomBarHeight = 104;
-  static const double bottomBarCornerRadius = 35;
-  static const double controlIconSize = 26;
-  static const double sportHeaderIconSize = 38;
-  static const double contentShapeCornerRadius = 16;
-  static const double iconSize = 24;
-  static const double flagSize = 16;
-  static const double sportIconSize = 15;
-  static const Size dotIndicatorSize = Size(6, 6);
-  static const double imageWatermarkOpacity = 0.7;
-  static const double indexBackgroundOpacity = 0.15;
-  static const double chartHeight = 250;
-  static const double orderListItemHeight = 60;
-  static const double slideButtonHeight = 72;
-  static const double onboardLogoSize = 40;
-
   static const double h1 = 28;
   static const double h2 = 24;
   static const double h3 = 18;
@@ -44,21 +8,13 @@ class Dimens {
   static const double h7 = 10;
   static const double h8 = 8;
 
-  static const double paddingXXS = 4;
-  static const double paddingXS = 8;
-  static const double paddingS = 16;
-  static const double paddingM = 20;
-  static const double paddingML = 24;
-  static const double paddingL = 28;
-  static const double paddingXL = 32;
-  static const double paddingXXL = 36;
-
   // Animation Durations
   static const Duration durationXS = Duration(milliseconds: 150);
   static const Duration durationS = Duration(milliseconds: 300);
   static const Duration durationM = Duration(milliseconds: 500);
   static const Duration durationL = Duration(milliseconds: 1000);
   static const Duration durationXL = Duration(milliseconds: 1500);
+  static const Duration durationXXL = Duration(milliseconds: 2400);
 
   // Grid sizes (for vertical sized-boxes, etc)
   static const double grid2 = 2;

@@ -1,4 +1,3 @@
-import 'package:food_app/routes/get_pages.dart';
 import 'package:food_app/screens/home/home_controller.dart';
 import 'package:food_app/screens/home/widget/product_Item.dart';
 import 'package:food_app/theme/app_colors.dart';
@@ -15,23 +14,21 @@ class HomeScreen extends GetView<HomeController> {
     return Scaffold(
       appBar: HomeAppBar("Home", actions: [
         GestureDetector(
-          onTap: () {
-            Get.toNamed<dynamic>(GetPages.cartScreen);
-          },
+          onTap: () => controller.redirectToCart(),
           child: Stack(alignment: Alignment.bottomRight, children: [
             Icon(
               Icons.shopping_cart,
-              size: 34,
+              size: Dimens.grid36,
             ),
             Obx(
               () => controller.cartSize <= 0
                   ? Container()
                   : Container(
-                      height: 20,
-                      width: 20,
+                      height: Dimens.grid20,
+                      width: Dimens.grid20,
                       decoration: BoxDecoration(
                         color: AppColors.containerColorWhite,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(Dimens.grid12),
                       ),
                       child: Center(
                         child: Text(
@@ -86,17 +83,13 @@ class HomeScreen extends GetView<HomeController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // Text("Items: " + controller.totalItems.toString()),
                         Text("Items: " + controller.cartSize.toString()),
                       ],
                     ),
                     GestureDetector(
-                      onTap: () {
-                        Get.toNamed<dynamic>(GetPages.cartScreen);
-                      },
+                      onTap: () => controller.redirectToCart(),
                       child: Text(
                         "Goto Cart",
-                        // controller.totalPrice.withDigits(2).rupee(),
                         style: AppTextStyle.h3Bold(),
                       ),
                     )

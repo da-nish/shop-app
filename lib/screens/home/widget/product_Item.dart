@@ -1,6 +1,7 @@
 import 'package:food_app/models/item_model.dart';
 import 'package:food_app/screens/home/home_controller.dart';
 import 'package:food_app/theme/app_decoration.dart';
+import 'package:food_app/theme/app_dimens.dart';
 import 'package:food_app/theme/app_text_style.dart';
 import 'package:food_app/utils/string_extension.dart';
 import 'package:flutter/material.dart';
@@ -20,14 +21,15 @@ class _HomeProductItemState extends State<HomeProductItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
-      padding: EdgeInsets.symmetric(vertical: 14, horizontal: 20),
+      height: Dimens.grid80,
+      padding: EdgeInsets.symmetric(
+          vertical: Dimens.grid12, horizontal: Dimens.grid20),
       decoration: AppBoxDecoration.borderBottom(),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ImageCard(widget.item.image),
-          SizedBox(width: 8),
+          SizedBox(width: Dimens.grid8),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,8 +38,7 @@ class _HomeProductItemState extends State<HomeProductItem> {
                 widget.item.name,
                 style: AppTextStyle.h3Bold(),
               ),
-              SizedBox(width: 10),
-              SizedBox(width: 10),
+              SizedBox(width: Dimens.grid20),
               Text(
                 widget.item.price.toString().rupee(),
                 style: AppTextStyle.h5Bold(),
@@ -45,7 +46,7 @@ class _HomeProductItemState extends State<HomeProductItem> {
             ],
           ),
           Expanded(child: Container()),
-          SizedBox(width: 10),
+          SizedBox(width: Dimens.grid10),
           Container(
             // width: 100,
             child: AddToCart(
