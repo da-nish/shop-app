@@ -17,7 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 
 
-![Example](https://raw.githubusercontent.com/da-nish/shop-app-ui/master/1.png)
+![Example](https://raw.githubusercontent.com/da-nish/shop-app/master/1.png)
 
 
-![Example](https://raw.githubusercontent.com/da-nish/shop-app-ui/master/2.png)
+![Example](https://raw.githubusercontent.com/da-nish/shop-app/master/2.png)
