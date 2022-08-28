@@ -1,5 +1,5 @@
-name: food_app
-description: food_app
+name: shop_app
+description: shop_app
 
 publish_to: 'none'
 version: 1.0.0+1

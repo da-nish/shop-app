@@ -1,5 +1,5 @@
-import 'package:food_app/theme/app_dimens.dart';
-import 'package:food_app/theme/app_text_style.dart';
+import 'package:shop_app/theme/app_dimens.dart';
+import 'package:shop_app/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {

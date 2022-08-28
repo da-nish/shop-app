@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/screens/cart_screen/cart_controller.dart';
-import 'package:food_app/theme/app_decoration.dart';
-import 'package:food_app/utils/double_extension.dart';
-import 'package:food_app/utils/string_extension.dart';
+import 'package:shop_app/screens/cart_screen/cart_controller.dart';
+import 'package:shop_app/theme/app_decoration.dart';
+import 'package:shop_app/utils/double_extension.dart';
+import 'package:shop_app/utils/string_extension.dart';
 import 'package:get/get.dart';
 
 class PlaceOrderCard extends StatelessWidget {

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:food_app/models/item_model.dart';
-import 'package:food_app/screens/cart_screen/cart_controller.dart';
-import 'package:food_app/screens/home/home_controller.dart';
+import 'package:shop_app/models/item_model.dart';
+import 'package:shop_app/screens/cart_screen/cart_controller.dart';
+import 'package:shop_app/screens/home/home_controller.dart';
 import 'package:get/get.dart';
 
 void main() {

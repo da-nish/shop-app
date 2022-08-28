@@ -1,5 +1,5 @@
-import 'package:food_app/models/user_model.dart';
-import 'package:food_app/routes/get_pages.dart';
+import 'package:shop_app/models/user_model.dart';
+import 'package:shop_app/routes/get_pages.dart';
 import 'package:get/get.dart';
 
 class RegistrationController extends GetxController {

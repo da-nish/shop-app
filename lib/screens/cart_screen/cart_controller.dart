@@ -1,8 +1,8 @@
-import 'package:food_app/models/cart_item_model.dart';
-import 'package:food_app/models/item_model.dart';
-import 'package:food_app/routes/get_pages.dart';
-import 'package:food_app/screens/home/home_controller.dart';
-import 'package:food_app/utils/double_extension.dart';
+import 'package:shop_app/models/cart_item_model.dart';
+import 'package:shop_app/models/item_model.dart';
+import 'package:shop_app/routes/get_pages.dart';
+import 'package:shop_app/screens/home/home_controller.dart';
+import 'package:shop_app/utils/double_extension.dart';
 import 'package:get/get.dart';
 
 class CartController extends GetxController {

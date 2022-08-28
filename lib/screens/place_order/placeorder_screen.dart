@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:food_app/routes/get_pages.dart';
-import 'package:food_app/screens/place_order/widget/showup_widget.dart';
-import 'package:food_app/theme/app_colors.dart';
-import 'package:food_app/theme/app_dimens.dart';
-import 'package:food_app/theme/app_text_style.dart';
-import 'package:food_app/utils/string_extension.dart';
-import 'package:food_app/widgets/appbar/secondry_appbar.dart';
+import 'package:shop_app/routes/get_pages.dart';
+import 'package:shop_app/screens/place_order/widget/showup_widget.dart';
+import 'package:shop_app/theme/app_colors.dart';
+import 'package:shop_app/theme/app_dimens.dart';
+import 'package:shop_app/theme/app_text_style.dart';
+import 'package:shop_app/utils/string_extension.dart';
+import 'package:shop_app/widgets/appbar/secondry_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';

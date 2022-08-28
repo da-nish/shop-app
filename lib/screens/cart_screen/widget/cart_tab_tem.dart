@@ -1,11 +1,11 @@
-import 'package:food_app/models/cart_item_model.dart';
-import 'package:food_app/screens/cart_screen/cart_controller.dart';
-import 'package:food_app/theme/app_decoration.dart';
-import 'package:food_app/theme/app_text_style.dart';
-import 'package:food_app/utils/string_extension.dart';
+import 'package:shop_app/models/cart_item_model.dart';
+import 'package:shop_app/screens/cart_screen/cart_controller.dart';
+import 'package:shop_app/theme/app_decoration.dart';
+import 'package:shop_app/theme/app_text_style.dart';
+import 'package:shop_app/utils/string_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:food_app/widgets/counter/counter.dart';
-import 'package:food_app/widgets/image_card/image_card.dart';
+import 'package:shop_app/widgets/counter/counter.dart';
+import 'package:shop_app/widgets/image_card/image_card.dart';
 
 class CartItem extends StatefulWidget {
   final CartItemModel cartItem;

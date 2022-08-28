@@ -1,11 +1,11 @@
-import 'package:food_app/screens/cart_screen/cart_controller.dart';
-import 'package:food_app/screens/cart_screen/widget/cart_tab_tem.dart';
-import 'package:food_app/screens/cart_screen/widget/place_order.dart';
-import 'package:food_app/theme/app_colors.dart';
-import 'package:food_app/theme/app_decoration.dart';
-import 'package:food_app/theme/app_dimens.dart';
-import 'package:food_app/theme/app_text_style.dart';
-import 'package:food_app/widgets/appbar/secondry_appbar.dart';
+import 'package:shop_app/screens/cart_screen/cart_controller.dart';
+import 'package:shop_app/screens/cart_screen/widget/cart_tab_tem.dart';
+import 'package:shop_app/screens/cart_screen/widget/place_order.dart';
+import 'package:shop_app/theme/app_colors.dart';
+import 'package:shop_app/theme/app_decoration.dart';
+import 'package:shop_app/theme/app_dimens.dart';
+import 'package:shop_app/theme/app_text_style.dart';
+import 'package:shop_app/widgets/appbar/secondry_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

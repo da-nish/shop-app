@@ -1,4 +1,4 @@
-import 'package:food_app/models/item_model.dart';
+import 'package:shop_app/models/item_model.dart';
 
 class CartItemModel {
   int count;

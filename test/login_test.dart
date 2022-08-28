@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:food_app/screens/user_registration/registration_controller.dart';
+import 'package:shop_app/screens/user_registration/registration_controller.dart';
 
 void main() {
   test('Login Name validation', () {

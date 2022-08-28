@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:food_app/models/item_model.dart';
-import 'package:food_app/screens/home/home_controller.dart';
+import 'package:shop_app/models/item_model.dart';
+import 'package:shop_app/screens/home/home_controller.dart';
 
 void main() {
   test('Home test', () {

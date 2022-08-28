@@ -1,11 +1,11 @@
-import 'package:food_app/screens/cart_screen/cart_binding.dart';
-import 'package:food_app/screens/cart_screen/cart_screen.dart';
-import 'package:food_app/screens/home/home_binding.dart';
-import 'package:food_app/screens/home/home_screen.dart';
-import 'package:food_app/screens/place_order/placeorder_binding.dart';
-import 'package:food_app/screens/place_order/placeorder_screen.dart';
-import 'package:food_app/screens/user_registration/registration_binding.dart';
-import 'package:food_app/screens/user_registration/registration_screen.dart';
+import 'package:shop_app/screens/cart_screen/cart_binding.dart';
+import 'package:shop_app/screens/cart_screen/cart_screen.dart';
+import 'package:shop_app/screens/home/home_binding.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
+import 'package:shop_app/screens/place_order/placeorder_binding.dart';
+import 'package:shop_app/screens/place_order/placeorder_screen.dart';
+import 'package:shop_app/screens/user_registration/registration_binding.dart';
+import 'package:shop_app/screens/user_registration/registration_screen.dart';
 
 import 'package:get/get.dart';
 
